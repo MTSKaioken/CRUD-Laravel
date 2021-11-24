@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [LoginController::class, 'callView']);
+
+Route::get('/sign-up', [SignUpController::class, 'callView']);
+
+Route::get('/albuns', [MainController::class, 'albuns'] );
+
+Route::get('/todos', function () {
+    return view('app.todos.todos');
+});
+Route::get('/posts', function () {
+    return view('app.posts.todos');
+});
+Route::get('/users', function () {
+    return view('app.users.users');
 });
