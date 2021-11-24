@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class SignUpController extends Controller
 {
     public function callView(){
-        return view('sign-up');
+        return view('site.cadastro');
     }
 }

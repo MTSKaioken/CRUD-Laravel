@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function albuns(){
-        return view('app.albuns.albuns');
+    public function callView(){
+        return view("site.index");
     }
 }

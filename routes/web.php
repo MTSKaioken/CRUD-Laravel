@@ -16,18 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginController::class, 'callView']);
+Route::get('/', [MainController::class, 'callView'])->name('site.index');
+Route::get('/login', [LoginController::class, 'callView'])->name('site.login');
+Route::get('/cadastro', [SignUpController::class, 'callView'])->name('site.cadastro');
 
-Route::get('/sign-up', [SignUpController::class, 'callView']);
-
-Route::get('/albuns', [MainController::class, 'albuns'] );
-
-Route::get('/todos', function () {
-    return view('app.todos.todos');
+Route::prefix('/vendedor') -> group(function() {
+    //Route::get('/produtos', [Controller::class, 'callView'])->name('vendedor.produtos');
 });
-Route::get('/posts', function () {
-    return view('app.posts.todos');
+
+Route::prefix('/cliente') -> group(function() {
+   //Route::get('/compras', [Controller::class, 'callView'])->name('cliente.compras');
 });
-Route::get('/users', function () {
-    return view('app.users.users');
+
+
+Route::fallback(function(){
+    echo 'A rota acessada não existe, <a href="'.route('site.index').'">Retornar a index</a>';
 });
