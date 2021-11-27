@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SignUpController extends Controller
+class CadastroController extends Controller
 {
     public function callView(){
         return view('site.cadastro');

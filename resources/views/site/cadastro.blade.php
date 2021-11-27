@@ -10,19 +10,15 @@
     <center>
         <h1>Cadastro</h1>
         <fieldset>
-            <form action="" method="post">
-            Login:<br><input type="text"> <br>
-            Senha:<br><input type="password" name="" id=""><br>
-            Repita a senha:<br><input type="password" name="" id=""><br>
-            Email:<br><input type="email" name="" id=""> <br>
-            Repita o Email:<br><input type="email" name="" id=""> <br> <br>
-            
-
-            <select name="tipo-usuario">
-                <option value="selecione" selected disabled>Selecione:</option>
-                <option value="vendedor">Vendedor</option>
-                <option value="comprador">Comprador</option>
-            </select> <br> <br>
+            <form action="{{ route('site.cadastro') }}" method="post">
+            @csrf
+            Login:<br><input type="text" > <br>
+            Senha:<br><input type="password" name=""><br>
+            Repita a senha:<br><input type="password" name=""><br>
+            Email:<br><input type="email" name="" > <br>
+            Repita o Email:<br><input type="email" name="" > <br> 
+            Numero: <br> <input type="numero_contato" name="" > <br> 
+            Código Postal: <br> <input type="codigo_postal" name=""> <br> <br>
 
             <input type="button" style="width: 211px;" value="Cadastrar"> <br>
             <a href="{{ route('site.login') }}">Já possui uma conta?</a>

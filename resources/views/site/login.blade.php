@@ -11,6 +11,7 @@
         <h1>Login</h1>
         <fieldset>
             <form action="" method="post">
+            @csrf
             Login:<br><input type="text" autofocus> <br>
             Senha:<br><input type="password" name="" id=""><br> <br>
             <input type="button" style="width: 211px;" value="Logar"> <br>

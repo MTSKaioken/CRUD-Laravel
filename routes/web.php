@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\CadastroController;
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\VendedorController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +21,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'callView'])->name('site.index');
 Route::get('/login', [LoginController::class, 'callView'])->name('site.login');
-Route::get('/cadastro', [SignUpController::class, 'callView'])->name('site.cadastro');
+
+Route::get('/contato', [ContatoController::class, 'callView'])->name('site.contato');
+
+Route::get('/cadastro', [CadastroController::class, 'callView'])->name('site.cadastro');
+Route::post('/cadastro', [CadastroController::class, 'callView'])->name('site.cadastro');
 
 Route::prefix('/vendedor') -> group(function() {
+    Route::get('/', [VendedorController::class, 'callView'])->name('vendedor.index');
     //Route::get('/produtos', [Controller::class, 'callView'])->name('vendedor.produtos');
 });
 
 Route::prefix('/cliente') -> group(function() {
+    Route::get('/', [ClienteController::class, 'callView'])->name('cliente.index');
    //Route::get('/compras', [Controller::class, 'callView'])->name('cliente.compras');
 });
 
