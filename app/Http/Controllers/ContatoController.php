@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\SiteContato;
 use Illuminate\Http\Request;
+use App\Http\Middleware\LogAcessoMiddleware;
+use Illuminate\Support\Facades\Log;
 
 class ContatoController extends Controller
 {
     //
+    public function __construct(){
+        $this->middleware(LogAcessoMiddleware::class);
+    }
+
     public function callView(){
         $motivo_contatos =[
             '1'=> 'Dúvida',
