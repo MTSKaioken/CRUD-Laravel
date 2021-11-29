@@ -9,13 +9,39 @@ class CadastroController extends Controller
     public function callView(){
         return view('site.cadastro');
     }
-    public function createCadastro(){
-        Usuario::create(['nome'=>'kaio','sobrenome'=>'martins',
-                         'login'=>'mtskaioken','senha'=>'kaio2011',
-                         'email'=>'kaioruan2018@gmail.com',
-                         'numero_contato'=>'11 981667180','codigo_postal'=>'08380-030']);
+    public function createCadastro(Request $request){
 
-        return view('site.cadastro');
+        $regras = [
+            'nome' => 'required|min:3|max:40',
+            'login' => 'required|unique:usuarios',
+            'senha' => 'required|same:confirma_senha',
+            'confirma_senha' => 'required|same:senha',
+            'email'=> 'required|email|unique:usuarios|same:confirma_email',
+            'confirma_email' => 'required|email|same:email',
+            'numero_contato' => 'required',
+            'codigo_postal' => 'required',
+        ];
+
+        $feedback = [
+            'required' => 'O Campo :attribute precisa ser preenchido',
+            'min' => 'O Campo deve ter no minimo 3 caracteres',
+            'nome.max' => 'O Campo deve ter no maximo 40 caracteres',
+            'unique' => 'Esse :attribute já existe',
+
+            'email' => 'Email inválido',
+            'confirma_email.required' => 'A Confirmação de email deve ser preenchida',
+            'email.same' => 'Os emails devem coincidir',
+            'confirma_email.same' => 'Os emails devem coincidir',
+
+            'senha.same' => 'As senhas devem coincidir',
+            'confirma_senha.same' => 'As senhas devem coincidir',
+            'confirma_senha.required' => 'A confirmação de senha deve ser preenchida'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        Usuario::create($request->all());       
+        return redirect()->route('site.login');
     }
 
     public function returnAllCadastro(){

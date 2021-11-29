@@ -15,10 +15,10 @@ class SiteContatoFactory extends Factory
     {
         return [
             //
-            'nome' =>$this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'motivo_contato' => $this-> faker ->randomNumber(1, 2),
-            'mensagem'=> $this -> faker -> text(200),          
+            'nome'=>$this->faker->name(),
+            'email'=>$this->faker->unique()->safeEmail(),
+            'motivo_contato'=>$this->faker->randomNumber(1, 2),
+            'mensagem'=> $this->faker->text(200),          
         ];
     }
 }

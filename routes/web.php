@@ -6,6 +6,7 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\MainController;
+use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +20,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'callView'])->name('site.index');
+Route::middleware(LogAcessoMiddleware::class)
+    ->get('/', [MainController::class, 'callView'])->name('site.index');
+
+    
+
 Route::get('/login', [LoginController::class, 'callView'])->name('site.login');
 
 Route::get('/contato', [ContatoController::class, 'callView'])->name('site.contato');
-Route::post('/contato', [ContatoController::class, 'callResponse'])->name('site.contato');
+Route::post('/contato', [ContatoController::class, 'saveContato'])->name('site.contato');
 
 Route::get('/cadastro', [CadastroController::class, 'callView'])->name('site.cadastro');
-Route::post('/cadastro', [CadastroController::class, 'callCadastro'])->name('site.cadastro');
+Route::post('/cadastro', [CadastroController::class, 'createCadastro'])->name('site.cadastro');
 
 Route::prefix('/vendedor') -> group(function() {
     Route::get('/', [VendedorController::class, 'callView'])->name('vendedor.index');
