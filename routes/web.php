@@ -6,7 +6,6 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\MainController;
-use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(LogAcessoMiddleware::class)
-    ->get('/', [MainController::class, 'callView'])->name('site.index');
+Route::get('/', [MainController::class, 'callView'])->name('site.index');
 
     
 
@@ -33,7 +31,7 @@ Route::post('/contato', [ContatoController::class, 'saveContato'])->name('site.c
 Route::get('/cadastro', [CadastroController::class, 'callView'])->name('site.cadastro');
 Route::post('/cadastro', [CadastroController::class, 'createCadastro'])->name('site.cadastro');
 
-Route::prefix('/vendedor') -> group(function() {
+Route::middleware('log.acesso', 'autenticacao')->prefix('/vendedor') -> group(function() {
     Route::get('/', [VendedorController::class, 'callView'])->name('vendedor.index');
     //Route::get('/produtos', [Controller::class, 'callView'])->name('vendedor.produtos');
 });
