@@ -23,7 +23,7 @@ Route::get('/', [MainController::class, 'callView'])->name('site.index');
 
     
 
-Route::get('/login', [LoginController::class, 'callView'])->name('site.login');
+Route::get('/login/{erro?}', [LoginController::class, 'callView'])->name('site.login');
 Route::post('/login', [LoginController::class, 'callAuthenticate'])->name('site.login');
 
 Route::get('/contato', [ContatoController::class, 'callView'])->name('site.contato');
@@ -32,12 +32,12 @@ Route::post('/contato', [ContatoController::class, 'saveContato'])->name('site.c
 Route::get('/cadastro', [CadastroController::class, 'callView'])->name('site.cadastro');
 Route::post('/cadastro', [CadastroController::class, 'createCadastro'])->name('site.cadastro');
 
-Route::middleware('autenticacao:padrao')->prefix('/vendedor') -> group(function() {
+Route::middleware('autenticacao')->prefix('/vendedor') -> group(function() {
     Route::get('/', [VendedorController::class, 'callView'])->name('vendedor.index');
     //Route::get('/produtos', [Controller::class, 'callView'])->name('vendedor.produtos');
 });
 
-Route::prefix('/cliente') -> group(function() {
+Route::middleware('autenticacao:padrao,perfil1,parametro1')->prefix('/cliente') -> group(function() {
     Route::get('/', [ClienteController::class, 'callView'])->name('cliente.index');
    //Route::get('/compras', [Controller::class, 'callView'])->name('cliente.compras');
 });
