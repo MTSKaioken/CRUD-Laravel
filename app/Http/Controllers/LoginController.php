@@ -50,10 +50,16 @@ class LoginController extends Controller
             $_SESSION['nome'] = $usuario->name;
             $_SESSION['email'] = $usuario->email;
 
-            return redirect()->route('cliente.index');
+            return redirect()->route('vendedor.index');
         } else {
             return redirect()->route('site.login', ['erro' => 1]);
         }
         //echo "teste";
+    }
+
+    public function callExit(){
+
+        session_destroy();
+        return redirect()->route('site.index');
     }
 }

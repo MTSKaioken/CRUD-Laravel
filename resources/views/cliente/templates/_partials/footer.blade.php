@@ -1,5 +1,5 @@
 
-<footer style="background-color: gray;"">
+<footer style="background-color: #e0dede;"">
     <center>
         <ul style="list-style: none;padding: 0px; margin: 0px;">
             <li><a href="https://github.com/MTSKaioken/CRUD-Laravel" style="text-decoration: none;">Github</a></li>

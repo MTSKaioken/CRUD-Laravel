@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CadastroController extends Controller
@@ -40,12 +40,12 @@ class CadastroController extends Controller
 
         $request->validate($regras, $feedback);
 
-        Usuario::create($request->all());       
+        User::create($request->all());       
         return redirect()->route('site.login');
     }
 
     public function returnAllCadastro(){
-        Usuario::all();
+        User::all();
         //Usuario::all()->pluck('email'); (para retornar somente os emails)
         return view('site.cadastro');
     }

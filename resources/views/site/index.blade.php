@@ -1,10 +1,6 @@
-<h1>bem vindo</h1>
+@extends('site.templates.base')
+@section('titulo', 'Index')
+@section('conteudo')
+<h1>Bem vindo</h1>
+@endsection
 
-<ul>
-    <li>
-        <a href="{{ route('site.login') }}">Login</a>
-    </li>
-    <li>
-        <a href="{{ route('site.cadastro') }}">Cadastro</a>
-    </li>
-</ul>
