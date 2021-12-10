@@ -4,13 +4,13 @@
         <title>@yield('titulo')</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{{ asset('../css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     </head>
-    <body style="margin: 0px; padding: 0px;">
+    <body>
         @include('site.templates._partials.navbar')
+        <div id="container">
         @yield('conteudo')
-        <div style="margin-bottom: 470px">
-        </div>
         @include('site.templates._partials.footer')
+        </div>
     </body>
 </html>

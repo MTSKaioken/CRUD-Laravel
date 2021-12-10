@@ -1,0 +1,94 @@
+
+/* GLOBAIS */
+html body{
+    margin: 0px; 
+    padding: 0px; 
+}
+
+/* navbar */
+nav ul{
+    background-color: #e0dede;
+    margin: 0px; 
+    padding: 10px;
+}
+nav ul li{
+    display: inline;
+}
+nav ul li a{
+    text-decoration:none;
+}
+
+input{
+
+}
+/* conteiner pra manter o footer no final do site em relação ao documento*/
+#container{
+    background-color: rgb(216, 215, 215);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* footer */
+footer{
+    position: absolute;
+    background-color: #e0dede;
+    width: 100%;
+    bottom: 0px;
+}
+
+footer ul{
+    list-style: none;
+    padding: 0px; 
+    margin: 0px;
+}
+
+footer ul li a{
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.send-form{
+    width: 211px;
+}
+
+/* FORNECEDORES */
+.nav-fornecedores ul li{
+    display: inline;
+}
+.nav-fornecedores ul li a{
+    text-decoration: none; 
+    float: right;
+     margin-left: 10px;
+}
+
+.link-align-right{
+    text-decoration:none;
+    float: right;
+    margin-left: 10px
+}
+
+.fieldsets{
+    width: 30%;
+    margin-bottom: 50px;
+}
+
+.container-fornecedores{
+    width: 90%; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.container-fornecedores table{
+    width: 100%;
+}
+.container-fornecedores th{
+    border-bottom: 1px solid black;
+}
+.container-fornecedores td{
+    border-bottom: 1px solid gray;
+}
+/* Paginação */
+nav .w-5{
+    width: 15px;
+}

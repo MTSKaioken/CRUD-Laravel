@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'callView'])->name('site.index');
+Route::get('/', [MainController::class, 'index'])->name('site.index');
 
-    
+Route::get('/cardapio', [MainController::class, 'cardapio'])->name('site.cardapio');    
 
 Route::get('/login/{erro?}', [LoginController::class, 'callView'])->name('site.login');
 Route::post('/login', [LoginController::class, 'callAuthenticate'])->name('site.login');
@@ -36,23 +36,23 @@ Route::post('/cadastro', [CadastroController::class, 'createCadastro'])->name('s
 
 
 Route::middleware('autenticacao:padrao,perfil1,parametro1')->prefix('/vendedor') -> group(function() {
-    Route::get('/home', [VendedorController::class, 'callView'])->name('vendedor.index');
+    Route::get('/', [VendedorController::class, 'callView'])->name('vendedor.index');
     
     Route::get('/fornecedor', [FornecedorController::class,'cadastro'])->name('vendedor.fornecedor.adicionar');
     Route::post('/fornecedor', [FornecedorController::class,'cadastro'])->name('vendedor.fornecedor.adicionar');
     Route::get('/fornecedor/listar', [FornecedorController::class,'listar'])->name('vendedor.fornecedor.listar');
     Route::post('/fornecedor/listar', [FornecedorController::class,'listar'])->name('vendedor.fornecedor.listar');
     Route::get('/fornecedor/editar/{id}/{msg?}', [FornecedorController::class,'editar'])->name('vendedor.fornecedor.editar');
+    Route::get('/fornecedor/excluir/{id}', [FornecedorController::class,'excluir'])->name('vendedor.fornecedor.excluir');
     
-    Route::get('/produto', [ProdutoController::class,'callCadastro'])->name('vendedor.produto.adicionar');
-    Route::get('/produto/listar', [ProdutoController::class,'callView'])->name('vendedor.produto.listar');
+    Route::resource('produto', ProdutoController::class);   
+
 
     Route::get('/sair', [LoginController::class, 'callExit'])->name('vendedor.sair');
 });
 
 Route::middleware('autenticacao:padrao,perfil1,parametro1')->prefix('/cliente') -> group(function() {
-    Route::get('/home', [ClienteController::class, 'callView'])->name('cliente.index');
-    Route::get('/produto', [ProdutoController::class,'callView'])->name('cliente.produto');
+    Route::get('/home', [MainController::class, 'cliente'])->name('cliente.index');
     Route::get('/sair', [LoginController::class, 'callExit'])->name('cliente.sair');
 });
 

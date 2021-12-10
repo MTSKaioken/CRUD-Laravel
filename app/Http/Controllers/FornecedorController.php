@@ -58,12 +58,17 @@ class FornecedorController extends Controller
         ->where('email', 'like', '%'.$request->input('email').'%')
         ->paginate(4);
 
-        return view('vendedor.fornecedor.listar', ['fornecedores' => $fornecedores]);       
+        return view('vendedor.fornecedor.listar', ['fornecedores' => $fornecedores, 'request' => $request->all()]);       
     }
 
     public function editar($id, $msg = ''){
-        echo "O id selecionado foi: $id";
         $fornecedor = Fornecedor::find($id);
         return view('vendedor.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
+    }
+
+    public function excluir($id, $msg = ''){
+        $fornecedor = Fornecedor::find($id)->delete();
+        $msg = "Registro deletado!";
+        return view('vendedor.fornecedor.adicionar', ['msg' => $msg]);
     }
 }

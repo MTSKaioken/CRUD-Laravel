@@ -3,24 +3,13 @@
     <head>
         <title>@yield('titulo')</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <style>
-        nav .w-5{
-            width: 15px;
-        }
-        nav a {
-            text-decoration: none;
-            color: gray;
-        }
-        nav a:hover{
-            color: black;
-        }
-        </style>
+        <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     </head>
-    <body style="margin: 0px; padding: 0px;">
+    <body>
         @include('vendedor.templates._partials.navbar')
+        <div id="container">
         @yield('conteudo')
-
         @include('vendedor.templates._partials.footer')
+        </div>
     </body>
 </html>

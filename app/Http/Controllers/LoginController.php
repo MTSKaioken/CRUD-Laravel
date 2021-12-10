@@ -38,16 +38,12 @@ class LoginController extends Controller
         $email = $request->get('email');
         $password = $request->get('senha');
 
-        //echo "$email | $password";
-
 
         $usuario = User::where('email', $email)->where('password', $password)->get()->first();
 
-        //echo "<br><br><br> $usuario";
-
         if(isset($usuario->name)){            
             session_start();
-            $_SESSION['nome'] = $usuario->name;
+            $_SESSION['name'] = $usuario->name;
             $_SESSION['email'] = $usuario->email;
 
             return redirect()->route('vendedor.index');

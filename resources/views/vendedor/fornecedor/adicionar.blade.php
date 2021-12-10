@@ -1,13 +1,17 @@
 @extends('vendedor.templates.base')
 @section('titulo', 'Adicionar Fornecedores')
 @section('conteudo')  
+    
+<div class="nav-fornecedores">
     <ul>
-        <li style="display: inline;"><a href="{{ route('vendedor.fornecedor.listar') }}" style="text-decoration: none;float: right; margin-left: 10px">Consulta</a></li>
-        <li style="display: inline;"><a href="{{ route('vendedor.fornecedor.adicionar') }}" style="text-decoration: none;float: right;">Novo</a></li>
+        <li><a href="{{ route('vendedor.fornecedor.listar') }}">Consulta</a></li>
+        <li><a href="{{ route('vendedor.fornecedor.adicionar') }}">Novo</a></li>
     </ul>
+</div>
+    
     <center>
-        <fieldset style="width: 30%">
-            <legend align="center">Cadastrar Fornecedor</legend>
+        <fieldset class="fieldsets">
+            <legend align="center">{{ isset($fornecedor) ? 'Atualizar' : 'Cadastrar' }} Fornecedor</legend>
             {{ $msg ?? '' }}
             <form action=" {{ route('vendedor.fornecedor.adicionar') }}" method="post">
                 <input type="hidden" value="{{ $fornecedor->id ?? '' }}" name="id"> 
@@ -20,8 +24,9 @@
                 <br> {{ $errors->has('uf') ? $errors->first('uf') : '' }} <br> 
                 <input type="text" value="{{ $fornecedor->email ?? old('email') }}" placeholder="Email Contato" name="email">
                 <br> {{ $errors->has('email') ? $errors->first('email') : '' }} <br>
-                <button type="submit" style="width: 211px">Cadastrar</button>
+                <button class="send-form" type="submit"> {{ isset($fornecedor) ? 'Atualizar' : 'Cadastrar' }} </button>
             </form>
         </fieldset>
+
     </center>
 @endsection

@@ -3,13 +3,13 @@
     <head>
         <title>@yield('titulo')</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ asset('css/estilo_basico.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
-    <body style="margin: 0px; padding: 0px;">
+    <body>
         @include('cliente.templates._partials.navbar')
         @yield('conteudo')
-        <div style="margin-bottom: 470px">
-        </div>
+        <div id="container">
         @include('cliente.templates._partials.footer')
+        </div>
     </body>
 </html>

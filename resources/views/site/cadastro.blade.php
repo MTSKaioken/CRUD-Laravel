@@ -6,15 +6,15 @@
         <fieldset style="width: 30%;">
             <form action="{{ route('site.cadastro') }}" method="post">
                 @csrf
-                <input type="text" name="nome" value="{{ old('nome') }}" placeholder="Nome">
-                <br>{{ $errors->has('nome') ? $errors->first('nome') : ''}}<br>
+                <input type="text" name="name" value="{{ old('name') }}" placeholder="Nome">
+                <br>{{ $errors->has('name') ? $errors->first('name') : ''}}<br>
                 <input type="text" name="login" placeholder="Login">
                 <br>{{ $errors->has('login') ? $errors->first('login') : ''}}<br>
                 
-                <input type="password" name="senha" placeholder="Senha">
-                <br>{{ $errors->has('senha') ? $errors->first('senha') : ''}}<br>
-                <input type="password" name="confirma_senha" placeholder="Repita a Senha">
-                <br>{{ $errors->has('confirma_senha') ? $errors->first('confirma_senha') : ''}}<br>
+                <input type="password" name="password" placeholder="Senha">
+                <br>{{ $errors->has('password') ? $errors->first('password') : ''}}<br>
+                <input type="password" name="confirm_password" placeholder="Repita a Senha">
+                <br>{{ $errors->has('confirm_password') ? $errors->first('confirm_password') : ''}}<br>
 
                 <input type="text" name="email" value="{{ old('email') }}" placeholder="email@email.com">
                 <br>{{ $errors->has('email') ? $errors->first('email') : ''}}<br>
