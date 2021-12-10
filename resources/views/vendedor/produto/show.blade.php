@@ -3,8 +3,8 @@
 @section('conteudo')  
 <div class="nav-fornecedores">
     <ul>
-        <li><a href="{{route('produto.index')}}">Consulta</a></li>
         <li><a href="{{route('produto.create')}}">Novo</a></li>
+        <li><a href="{{route('produto.index')}}">Voltar</a></li>
     </ul>
 </div>
 

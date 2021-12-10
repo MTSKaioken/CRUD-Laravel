@@ -86,7 +86,7 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         //
-        return view('vendedor.produto.edit', ['produto' => $produto]);
+        return view('vendedor.produto.create', ['produto' => $produto]);
     }
 
     /**
